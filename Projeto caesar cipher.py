@@ -4,18 +4,21 @@ alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
             's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direcao = input("Escreva 'Encode' para enciptar ou 'Decode' para decodificar\n").lower()
-mensagem = input("Escreva a mensagem\n").lower()
+direcao = input("Escreva 'Encriptar' para encriptar ou 'Descriptar' para decodificar\n").lower()
+mensagem = input("Escreva a mensagem\n").lower().replace(" ","")
 deslocamento = int(input("Digite o número do turno\n"))
 
-def encriptar(string,inteiro):
-    texto_escondido = ""
-    for letra in string:
-       posicao = alfabeto.index((letra))
-       nova_posicao = posicao + inteiro
-       nova_letra = alfabeto[nova_posicao]
-       texto_escondido += nova_letra
+def cesar(direcao_de_cesar,texto_inicial,desloc):
+    texto_final = ""
+    if direcao_de_cesar == "descriptar":
+        desloc *= -1
+    for letra in texto_inicial:
+        posicao = alfabeto.index(letra)
+        nova_posicao = posicao + desloc
+        texto_final += alfabeto[nova_posicao]
 
-    print(texto_escondido)
+    print(texto_final)
 
-encriptar(mensagem,deslocamento)
+cesar(direcao_de_cesar = direcao,texto_inicial = mensagem,desloc = deslocamento)
+
+
